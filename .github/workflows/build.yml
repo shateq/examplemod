@@ -6,14 +6,12 @@ jobs:
     strategy:
       matrix:
         # Use these Java versions
-        java: [
-          17,
-        ]
+        java: [17]
         # and run on both Linux and Windows
         os: [ubuntu-20.04, windows-2022]
     runs-on: ${{ matrix.os }}
     steps:
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: validate gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: setup jdk ${{ matrix.java }}
