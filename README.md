@@ -1,5 +1,8 @@
 # Fabric Example Mod
 
+How to add X?
+Maybe there will be some explanation in the future if interested
+
 ## Setup
 
 For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
