@@ -37,14 +37,13 @@ tasks {
             rename { "${it}_$archiveBaseName" }
         }
     }
-
     withType<JavaCompile> {
-        // Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+        options.encoding = Charsets.UTF_8.name()
         options.release.set(17)
     }
     // fabric.mod.json
     processResources {
-        charset("UTF-8")
+        filteringCharset = Charsets.UTF_8.name()
         filesMatching("fabric.mod.json") {
             expand(
                 "version" to project.version
