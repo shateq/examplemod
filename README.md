@@ -1,7 +1,15 @@
 # Fabric Example Mod
 
-How to add X?
+How to X?
 Maybe there will be some explanation in the future if interested
+
+<a href="https://modrinth.com/mod/fabric-api">
+<img src="https://i.imgur.com/Ol1Tcf8.png" height="64">
+</a>
+
+## Download
+
+- https://modrinth.com/mods
 
 ## Setup
 
