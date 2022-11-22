@@ -1,7 +1,11 @@
-# Fabric Example Mod
+# examplemod Fabric
 
 How to X?
 Maybe there will be some explanation in the future if interested
+
+## Mod Badges?
+
+See: https://github.com/shateq/shateq/blob/main/BADGES.md
 
 <a href="https://modrinth.com/mod/fabric-api">
 <img src="https://i.imgur.com/Ol1Tcf8.png" height="64">
