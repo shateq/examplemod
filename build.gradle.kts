@@ -1,7 +1,6 @@
 plugins {
     `java-library`
     `maven-publish`
-
     id("fabric-loom") version "1.0-SNAPSHOT"
     id("com.modrinth.minotaur") version "2.+"
 }
@@ -13,17 +12,19 @@ description = "This is an example description! Tell everyone what your mod is ab
 
 dependencies {
     minecraft("com.mojang:minecraft:${project.extra["mc"]}")
-    mappings("net.fabricmc:yarn:${project.extra["yarn"]}:v2")
     //Alternative mojang mappings
     //mappings(loom.officialMojangMappings())
-    modImplementation("net.fabricmc:fabric-loader:${project.extra["loader"]}")
+    mappings("net.fabricmc:yarn:${project.extra["yarn"]}:v2")
     //Fabric API
+    modImplementation("net.fabricmc:fabric-loader:${project.extra["loader"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.extra["fapi"]}")
+    //Enable deprecated FabricAPI modules
+    //modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 }
 
 java {
-    //withSourcesJar()
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    //withSourcesJar()
 }
 
 loom {
@@ -44,7 +45,10 @@ tasks {
     processResources {
         filteringCharset = Charsets.UTF_8.name()
         filesMatching("fabric.mod.json") {
-            expand("version" to project.version, "description" to project.description)
+            expand(
+                "version" to project.version,
+                "description" to project.description
+            )
         }
     }
 }
@@ -57,7 +61,7 @@ modrinth {
     versionType.set("alpha") // 'release', 'alpha', 'beta'
 
     uploadFile.set(tasks[tasks.remapJar.name]) // With Loom, this MUST be set to `remapJar` instead of `jar`!
-    gameVersions.addAll("1.18", "1.18.1", "1.18.2") // Must be an array, even with only one version
+    gameVersions.addAll("1.19", "1.19.1", "1.19.3") // Must be an array, even with only one version
     loaders.addAll("fabric") // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
     dependencies {
         // scope.type: can be `required`, `optional`, `incompatible`, or `embedded`
