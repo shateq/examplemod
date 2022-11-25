@@ -10,15 +10,21 @@ group = "com.example"
 base.archivesName.set("fabric-example-mod")
 description = "This is an example description! Tell everyone what your mod is about!"
 
+//ParchmentMC mappings
+//repositories.maven("https://maven.parchmentmc.org")
+
 dependencies {
     minecraft("com.mojang:minecraft:${project.extra["mc"]}")
-    //Alternative mojang mappings
-    //mappings(loom.officialMojangMappings())
-    mappings("net.fabricmc:yarn:${project.extra["yarn"]}:v2")
-    //Fabric API
     modImplementation("net.fabricmc:fabric-loader:${project.extra["loader"]}")
+    mappings("net.fabricmc:yarn:${project.extra["yarn"]}:v2")
+    //Alternatively mojang maps
+    //mappings(loom.officialMojangMappings())
+    //Alternatively ParchmentMC maps
+    //mappings(loom.layered { officialMojangMappings(); parchment("org.parchmentmc.data:parchment-1.19.2:${project.extra["parchment"]}") })
+
+    //Fabric API
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.extra["fapi"]}")
-    //Enable deprecated FabricAPI modules
+    //Deprecated FabricAPI modules
     //modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 }
 
@@ -37,7 +43,7 @@ tasks {
             rename { "${it}_$archiveBaseName" }
         }
     }
-    withType<JavaCompile> {
+    compileJava {
         options.encoding = Charsets.UTF_8.name()
         options.release.set(17)
     }
